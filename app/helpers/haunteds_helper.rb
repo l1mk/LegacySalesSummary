@@ -1,0 +1,2 @@
+module HauntedsHelper
+end

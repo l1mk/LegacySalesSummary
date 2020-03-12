@@ -1,0 +1,2 @@
+class Haunted < ApplicationRecord
+end

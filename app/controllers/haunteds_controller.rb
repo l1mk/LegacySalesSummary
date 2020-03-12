@@ -1,0 +1,2 @@
+class HauntedsController < ApplicationController
+end
