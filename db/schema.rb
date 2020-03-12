@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_03_12_031925) do
     t.string "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "week_id"
   end
 
   create_table "weeks", force: :cascade do |t|

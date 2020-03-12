@@ -11,7 +11,7 @@
 
   <body>
     <% if current_user != nil %> 
-    <p> You are login as <%= link_to current_user.name, user_path(current_user.id) %></p>
+    <p> You are login as <%= link_to current_user.username, user_path(current_user.id) %></p>
     <%= link_to "Log out", "/logout" %><br>
     <% else %>
     <%= link_to "Sign up", "/users/new" %><br>

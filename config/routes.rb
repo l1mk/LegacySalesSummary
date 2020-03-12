@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'sessions#index'
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
   
   resources :clients
   resources :farms
