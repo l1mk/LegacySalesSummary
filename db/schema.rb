@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_022843) do
+ActiveRecord::Schema.define(version: 2020_03_12_031925) do
 
   create_table "clients", force: :cascade do |t|
     t.string "company"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_03_12_022843) do
     t.date "date_of_visit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "week_id"
+    t.integer "client_id"
   end
 
   create_table "haunteds", force: :cascade do |t|
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 2020_03_12_022843) do
     t.integer "fds_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "week_id"
+    t.integer "client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,12 +51,14 @@ ActiveRecord::Schema.define(version: 2020_03_12_022843) do
     t.string "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "week_id"
   end
 
   create_table "weeks", force: :cascade do |t|
     t.integer "week_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
 end
