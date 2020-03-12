@@ -1,0 +1,11 @@
+<h1>Sing in</h1>
+
+<%= form_tag(sessions_path) do %>
+    Username: <%= select_tag 'user_id', options_for_select(@users.collect{|u|[u.name.u.id]}) %><br>
+    Email: <%= text_field_tag :email %><br>
+    Position: <%= text_field_tag :position %><br>
+    Password: <%= password_field_tag :password %><br>
+    Password Confirmation: <%= password_field_tag :password_confirmation %><br>
+    <%= submit_tag "Login" %> 
+<% end %>
+    

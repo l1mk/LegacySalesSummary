@@ -4,12 +4,12 @@ class SessionsController < ApplicationController
     end
 
     def new
-        @users.all
+        @users = User.all
     end
 
     def create
-        @user = User.find_by(username: params[:user][:username])
-        return head(:forbidden) unless @user.authenticate(params[:user][:password])
+        @user = User.find_by(username: params[:username])
+        return head(:forbidden) unless @user.authenticate(params[:password])
         log_in(@user)
         redirect_to @user
     end
