@@ -1,4 +1,4 @@
-<h1>Weeks Page</h1>
+<h1>Weeks List</h1>
 
 <% @weeks.each do |w| %>
     <ul><%= link_to w.week_number, user_week_path(current_user.id, w.id) %>

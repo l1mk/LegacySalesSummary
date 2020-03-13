@@ -1,6 +1,6 @@
-<h1>Week Edition</h1>
+<h1>Week Edition Page</h1>
 <h3><%= link_to "Delete", user_week_path(current_user.id, @week), data: { method: :delete, confirm: "Are you sure you want to delete the Week?" } %></h3>
-a
+
 <%= form_for @week, url: user_week_path(current_user.id, @week) do |f| %>
     <% if @week.errors.any? %>
       <div id="error_explanation">

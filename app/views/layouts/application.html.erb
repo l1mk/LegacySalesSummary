@@ -12,11 +12,14 @@
   <body>
     <% if current_user != nil %> 
     <p> You are login as <%= link_to current_user.username, user_path(current_user.id) %></p>
+    <%= link_to "View All Weeks", user_weeks_path(current_user.id) %><br>
+    <%= link_to "View All Clients", clients_path %><br> 
     <%= link_to "Log out", "/logout" %><br>
     <% else %>
     <%= link_to "Sign up", "/users/new" %><br>
     <%= link_to "Sign in", "/login" %><br>
     <% end %>
+
   <br>
   <%= link_to "HOME", "/" %>
       <% flash.each do |name, msg| -%>
