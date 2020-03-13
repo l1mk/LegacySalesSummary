@@ -1,0 +1,7 @@
+<h1>Week Creation</h1>
+
+<%= form_for @week, url: user_weeks_path do |f| %>
+    Week Number: <%= f.number_field :week_number %><br>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Create Week" %> 
+<% end %>

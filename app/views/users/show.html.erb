@@ -1,0 +1,22 @@
+<h1>Employee Page</h1>
+
+<ul>
+    <li>Total Farms:
+    <li>Total Haunted:
+    <li>Total First Day Sale:
+    <li>Total Clients:
+</ul>
+
+
+<h3>Performance per week:</h3>
+<% @weeks.each do |w| %>
+    <ul><%= w.week_number %>
+    <% w.haunteds.each do |h| %>
+       <li>Type: <%= h.type %>
+       <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
+       <li>Date: <%= h.date_of_the_order %>
+       </ul> 
+       <% end %>
+    <% end %>
+    
+<h3><%= link_to "New Week", new_user_week_path(@user) %></h3>

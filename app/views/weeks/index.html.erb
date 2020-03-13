@@ -1,0 +1,11 @@
+<h1>Weeks Page</h1>
+
+<% @weeks.each do |w| %>
+    <ul><%= link_to w.week_number, user_week_path(current_user.id, w.id) %>
+    <% w.haunteds.each do |h| %>
+       <li>Type: <%= h.type %>
+       <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
+       <li>Date: <%= h.date_of_the_order %>
+       </ul> 
+       <% end %>
+    <% end %>

@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = User.find_by(id: current_user.id)
+        @weeks = Week.all
     end
 
     def edit

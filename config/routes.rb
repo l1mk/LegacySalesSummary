@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   
   resources :clients
-  resources :farms
-  resources :haunteds
-  resources :weeks
-  resources :users
+  resources :users do 
+    resources :weeks do 
+      resources :haunteds
+      resources :farms 
+    end
+  end
+
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
