@@ -1,0 +1,23 @@
+<h1>Week Edition</h1>
+<h3><%= link_to "Delete", user_week_path(current_user.id, @week), data: { method: :delete, confirm: "Are you sure you want to delete the Week?" } %></h3>
+a
+<%= form_for @week, url: user_week_path(current_user.id, @week) do |f| %>
+    <% if @week.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@week.errors.count, "error") %>
+          prohibited this week from being saved:
+        </h2>
+    
+        <ul>
+        <% @week.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    Week Number: <%= f.number_field :week_number %><br>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Update Week" %> 
+<% end %>

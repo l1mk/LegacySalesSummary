@@ -23,10 +23,26 @@ class WeeksController < ApplicationController
     end
 
     def edit
+        @week = Week.find(params[:id])
     end
 
     def update
+        @week = Week.find(params[:id])
+        @week.update(week_params)
+        if @week.save 
+            redirect_to user_weeks_url
+        else
+            render :edit
+        end
     end
+
+    def destroy
+        @week = Week.find(params[:id])
+        @week.destroy 
+        flash[:notice] = "Week deleted"
+        redirect_to user_weeks_path
+    end
+
 
     private 
     def week_params 

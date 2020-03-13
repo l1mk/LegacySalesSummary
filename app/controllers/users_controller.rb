@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+    before_action :require_login, only: [:edit, :destroy]
     def new
         @user = User.new
     end
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: current_user.id)
+        @user = User.find_by(id: params[:id])
         @weeks = Week.all
     end
 
@@ -38,12 +40,15 @@ class UsersController < ApplicationController
         flash[:notice] = "User deleted"
         redirect_to users_path
     end
-    
+
 
     private 
     def user_params 
         params.require(:user).permit(:username, :email, :password, :position, :week_id)
     end
 
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+    end
 
 end

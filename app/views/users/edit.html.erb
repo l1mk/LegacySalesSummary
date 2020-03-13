@@ -1,6 +1,22 @@
 <h1>Edit User Page</h1>
+<h3><%= link_to "Delete", user_path(@user), data: { method: :delete, confirm: "Are you sure you want to delete the User?" } %></h3>
 
 <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@user.errors.count, "error") %>
+          prohibited this user from being saved:
+        </h2>
+    
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     Username: <%= f.text_field :username %><br>
     Email: <%= f.text_field :email %><br>
     Position: <%= f.text_field :position %><br>
