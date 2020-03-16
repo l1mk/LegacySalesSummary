@@ -9,24 +9,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  
+    <header>
+    <ul id="left-nav">
+    <li><a href="/"</a><img src="logo.jpeg" alt="Legacy Logo" title="Home"></li>
+    </ul>
+  
+      <% if current_user != nil %> 
+    <ul id="right-nav"> 
+    <li><a><%= link_to "Weeks", user_weeks_path(current_user.id) %></a></li>
+    <li><a><%= link_to "Clients", clients_path %></a></li> 
+    <li><a><%= link_to "Employees", users_path %></a></li> 
+    <li><a><%= link_to "Profile", user_path(current_user.id) %></a></li> 
+    <li><a><%= link_to "Log out", "/logout" %></a></li>
+    </ul>
+      <% else %>
+    <ul id="right-nav">
+    <li><a><%= link_to "Sign up", "/users/new" %></a></li>
+    <li><a><%= link_to "Sign in", "/login" %></a></li>
+    </ul>   
+      <% end %>
+    </header>
+
+
   <body>
-  <div class="header">
-  <a href="/"</a><img src="../../assets/images/logo.jpeg" alt="Legacy Logo" title="Click to go back home!">
-  </div>
-
-
-    <% if current_user != nil %> 
-    <p> You are login as <%= link_to current_user.username, user_path(current_user.id) %></p>
-    <%= link_to "View All Weeks", user_weeks_path(current_user.id) %><br>
-    <%= link_to "View All Clients", clients_path %><br> 
-    <%= link_to "View All Employees", users_path %><br> 
-    <%= link_to "Log out", "/logout" %><br>
-    <% else %>
-    <%= link_to "Sign up", "/users/new" %><br>
-    <%= link_to "Sign in", "/login" %><br>
-    <% end %>
-
-  <br>
       <% flash.each do |name, msg| -%>
         <%= content_tag :div, msg, class: name %>
       <% end -%>
@@ -35,7 +41,10 @@
 
   <footer>
   <h3><%= link_to "Back", :back %></h3>
-  <p>Created by: Juan S1u</p>
+  <% if current_user != nil %> 
+  You are login as <%= link_to current_user.username, user_path(current_user.id) %><br>
+  <% end %>
+  <!-- <p>Created by: Juan S1u</p> -->
   <!-- <p>Contact information: <a href="mailto:juan.siu@egmial.com">juan.siu@egmial.com</a>.</p> -->
 </footer>
 

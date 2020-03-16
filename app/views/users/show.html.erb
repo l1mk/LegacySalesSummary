@@ -14,7 +14,7 @@
 </ul>
 
 
-<h3>Performance per week:</h3>
+<h3>Performance per Week:</h3>
 <% @weeks.each do |w| %>
     <ul><%= link_to w.week_number, user_week_path(@user, w) %>
     <% w.haunteds.each do |h| %>
