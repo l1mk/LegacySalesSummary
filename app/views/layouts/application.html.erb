@@ -10,6 +10,11 @@
   </head>
 
   <body>
+  <div class="header">
+  <a href="/"</a><img src="../images/legacy_logo.jpeg" alt="Legacy Logo" title="Click to go back home!">
+  </div>
+
+
     <% if current_user != nil %> 
     <p> You are login as <%= link_to current_user.username, user_path(current_user.id) %></p>
     <%= link_to "View All Weeks", user_weeks_path(current_user.id) %><br>
@@ -22,11 +27,16 @@
     <% end %>
 
   <br>
-  <%= link_to "HOME", "/" %>
       <% flash.each do |name, msg| -%>
         <%= content_tag :div, msg, class: name %>
       <% end -%>
     <%= yield %>
-  
   </body>
+
+  <footer>
+  <h3><%= link_to "Back", :back %></h3>
+  <p>Created by: Juan S1u</p>
+  <!-- <p>Contact information: <a href="mailto:juan.siu@egmial.com">juan.siu@egmial.com</a>.</p> -->
+</footer>
+
 </html>

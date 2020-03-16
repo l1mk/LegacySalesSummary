@@ -16,7 +16,7 @@
 
 <h3>Performance per week:</h3>
 <% @weeks.each do |w| %>
-    <ul><%= w.week_number %>
+    <ul><%= link_to w.week_number, user_week_path(@user, w) %>
     <% w.haunteds.each do |h| %>
        <li>Type: <%= h.type %>
        <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>

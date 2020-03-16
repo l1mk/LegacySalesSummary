@@ -21,6 +21,8 @@ class WeeksController < ApplicationController
     def show
         @user = User.find_by(id: current_user.id)
         @week = Week.find_by(id: params[:id])
+        @client = Client.new
+        @clients = Client.all 
     end
 
     def edit
