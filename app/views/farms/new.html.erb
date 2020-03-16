@@ -1,0 +1,26 @@
+<h1>Haunted Sale</h1>
+
+
+<%= form_for @haunted do |f| %>
+    <% if @haunted.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@haunted.errors.count, "error") %>
+          prohibited this haunted from being saved:
+        </h2>
+    
+        <ul>
+        <% @haunted.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    Company: <%= f.text_field :company %><br>
+    Decision Maker: <%= f.text_field :dm %><br>
+    Address: <%= f.text_field :address %><br>
+    Phone: <%= f.text_field :phone %><br>
+    Email: <%= f.text_field :email %><br>
+    <%= f.submit "Create haunted" %> 
+<% end %>
