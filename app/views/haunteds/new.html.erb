@@ -1,0 +1,29 @@
+<h1>Haunted Sale</h1>
+
+
+<%= form_for @haunted do |f| %>
+    <% if @haunted.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@haunted.errors.count, "error") %>
+          prohibited this haunted from being saved:
+        </h2>
+    
+        <ul>
+        <% @haunted.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    Select Company: <%= select_tag 'client_id', options_for_select(@clients.collect{|u|[u.company, u.id]}) %><br>
+    <%= f.hidden_field :week_id, :value => @week.id %><br>
+    Type: <%= f.text_field :type %><br>
+    Recap: <%= f.number_field :recap %><br>
+    Order Number: <%= f.number_field :order_number %><br>
+    First Day Sale: <%= f.number_field :fds_amount %><br>
+    Date of the order: <%= f.text_field :email %><br>
+    
+
+    <%= f.submit "Create Sale" %> 
+<% end %>

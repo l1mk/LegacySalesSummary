@@ -1,0 +1,9 @@
+<h1><%= @farm.recap %> Farm Page</h1>
+<h3><%= link_to "Edit", edit_user_week_farm_path(current_user.id, @week.id, @farm) %></h3>
+
+Amount: $ <%= @farm.amount %>
+Date: <%= @farm.date_of_visit %>
+Week: <%= @week.week_number %>
+Company: <%= @client.company %>
+
+
