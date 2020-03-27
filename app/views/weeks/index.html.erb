@@ -2,23 +2,8 @@
 
 <% @weeks.each do |w| %>
     <h3>#<%= link_to w.week_number, user_week_path(current_user.id, w.id) %> Week:</h3>
-    <h3>Haunteds: (<%= w.haunteds.count %>)</h3>
-    <ol>
-    <% w.haunteds.each do |h| %>
-        <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
-        <p>Payment: <%= h.payment %></p>
-        <p>Date: <%= h.date_of_the_order %></p>
-    <% end %>
-    </ol>
-    <h3>Farms:(<%= w.farms.count %>)</h3>
-    <ol>
-    <% w.farms.each do |f| %>
-        <li>Recap:<%= f.recap %>
-        <p>Date: <%= f.date_of_visit %></p>
-        <p>Amount: $<%= f.amount %></p>
-    <% end %>
-    </ol>   
-
+    <h4>- Haunteds: (<%= w.haunteds.count %>)</h4>
+    <h4>- Farms:(<%= w.farms.count %>)</h4>
     <% end %>
     <br>
 

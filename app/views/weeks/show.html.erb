@@ -3,52 +3,23 @@
 
 
 <p>Summary for the Week</p>
-
-
-    <table style="width:100%">
-        <tr>
-          <th>Company Name</th>
-          <th>Decision Maker</th> 
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Email</th>
-        </tr>
-        
-        <% @clients.each do |c| %>
-        <tr>
-          <td><%= link_to c.company, client_path(c) %></td>
-          <td> <%= c.dm %> </td>
-          <td> <%= c.address %> </td>
-          <td> <%= c.phone %> </td>
-          <td> <%= c.email %> </td> 
-          <% end %>
-        </tr><br>
-    </table><br>
-
-    <p>Or Add new client to the week</p>
-<%= form_for @client do |f| %>
-    <% if @client.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@client.errors.count, "error") %>
-          prohibited this client from being saved:
-        </h2>
-    
-        <ul>
-        <% @client.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
+    <ol>
+    <% @week.haunteds.each do |h| %>
+        <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
+        <p>Payment: <%= h.payment %></p>
+        <p>Date: <%= h.date_of_the_order %></p>
+        <p>Company: <%= link_to h.client.company, client_path(h.client) %></p>
     <% end %>
-
-    Company: <%= f.text_field :company %><br>
-    Decision Maker: <%= f.text_field :dm %><br>
-    Address: <%= f.text_field :address %><br>
-    Phone: <%= f.text_field :phone %><br>
-    Email: <%= f.text_field :email %><br>
-    <%= f.submit "Create Client" %> 
-<% end %>
-
+    </ol>
+   
+    <ol>
+    <% @week.farms.each do |f| %>
+        <li>Recap:<%= f.recap %>
+        <p>Date: <%= f.date_of_visit %></p>
+        <p>Amount: $<%= f.amount %></p>
+        <p>Company: <%= link_to f.client.company, client_path(f.client) %></p>
+    <% end %>
+    </ol>   
+<h3><%= link_to "New Client", new_client_path %></h3>
 <h3><%= link_to "New Haunted", new_user_week_haunted_path(current_user.id, @week.id) %></h3>
 <h3><%= link_to "New Farm", new_user_week_farm_path(current_user.id, @week.id) %></h3>

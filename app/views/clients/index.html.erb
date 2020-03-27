@@ -1,9 +1,24 @@
 <h1>Clients List</h1>
 
+<table style="width:100%">
+<tr>
+  <th>Company Name</th>
+  <th>Decision Maker</th> 
+  <th>Address</th>
+  <th>Phone</th>
+  <th>Email</th>
+</tr>
+
 <% @clients.each do |c| %>
-    <ul><%= link_to c.company, client_path(c) %></ul> 
-<% end %>
-<br>
+<tr>
+  <td><%= link_to c.company, client_path(c) %></td>
+  <td> <%= c.dm %> </td>
+  <td> <%= c.address %> </td>
+  <td> <%= c.phone %> </td>
+  <td> <%= c.email %> </td> 
+  <% end %>
+</tr><br>
+</table><br>
 
 <h3><%= link_to "New Client", new_client_path %></h3>
 <br>
