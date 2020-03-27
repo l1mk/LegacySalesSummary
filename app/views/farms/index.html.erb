@@ -2,5 +2,5 @@
 
 <% @farms.each do |f| %>
        <li>Recap:<%= link_to f.recap, user_week_farm_url(current_user.id, f.week_id, f.id) %>
-       <li>Date: <%= f.date_of_visit %>
+       <p>Date: <%= f.date_of_visit %></p>
 <% end %>

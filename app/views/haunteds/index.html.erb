@@ -1,0 +1,6 @@
+<h1>Haunteds List</h1>
+
+<% @haunteds.each do |h| %>
+       <li>Recap:<%= link_to h.recap, user_week_haunted_url(current_user.id, h.week_id, h.id) %>
+       <p>Date: <%= h.date_of_the_order %></p>
+<% end %>

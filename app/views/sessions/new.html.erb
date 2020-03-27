@@ -1,7 +1,7 @@
 <h1>Sign in</h1>
 
 <%= form_tag(sessions_path) do %>
-    Username: <%= select_tag 'user_id', options_for_select(@users.collect{|u|[u.username, u.id]}) %><br>
+    Email: <%= select_tag 'user_id', options_for_select(@users.collect{|u|[u.username, u.id]}) %><br>
     Password: <%= password_field_tag :password %><br>
     Password Confirmation: <%= password_field_tag :password_confirmation %><br>
     <%= submit_tag "Login" %> 

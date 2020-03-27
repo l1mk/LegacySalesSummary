@@ -1,0 +1,26 @@
+<h1>Haunt Edition Page</h1> 
+<h3><%= link_to "Delete", user_week_haunted_path(current_user.id, @haunted.week_id, @haunted.id), data: { method: :delete, confirm: "Are you sure you want to delete the Farm?" } %></h3>
+
+<%= form_for @haunted, url: user_week_haunted_path(current_user.id, @haunted.week_id, @haunted.id) do |h| %>
+    <% if @haunted.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@haunted.errors.count, "error") %>
+          prohibited this haunted from being saved:
+        </h2>
+    
+        <ul>
+        <% @haunted.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    Type: <%= select_tag 'payment', options_for_select("Invoice", "Prepaid") %>
+    Type: <%= h.text_field :payment %><br>
+    Recap: <%= h.number_field :recap %><br> or Order Number: <%= h.number_field :order_number %><br>
+    First Day Sale: $ <%= h.number_field :fds_amount %><br>
+    Date of the order (format YEAR-MO-DA): <%= h.text_field :date_of_the_order %><br>
+    
+    <%= h.submit "Update Haunted Sale" %> 
+<% end %>

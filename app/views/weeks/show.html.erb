@@ -50,4 +50,5 @@
     <%= f.submit "Create Client" %> 
 <% end %>
 
+<h3><%= link_to "New Haunted", new_user_week_haunted_path(current_user.id, @week.id) %></h3>
 <h3><%= link_to "New Farm", new_user_week_farm_path(current_user.id, @week.id) %></h3>

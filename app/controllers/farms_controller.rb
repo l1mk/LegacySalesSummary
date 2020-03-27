@@ -12,8 +12,10 @@ class FarmsController < ApplicationController
     
         def create
             @clients = Client.all
+            @user = User.find_by(id: current_user.id)
             @farm = Farm.new(farm_params)
             @farm.client = Client.find_by(id: params[:client_id])
+            @farm.user = @user
             if @farm.save 
                 redirect_to user_week_farms_url
             else
@@ -51,7 +53,7 @@ class FarmsController < ApplicationController
     
         private 
         def farm_params 
-            params.require(:farm).permit(:amount, :recap, :date_of_visit, :week_id, :client_id)
+            params.require(:farm).permit(:amount, :recap, :date_of_visit, :week_id, :client_id, :user_id)
         end
 
 end

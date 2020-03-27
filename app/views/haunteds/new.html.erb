@@ -1,7 +1,7 @@
 <h1>Haunted Sale</h1>
 
 
-<%= form_for @haunted do |f| %>
+<%= form_for @haunted, url: user_week_haunteds_path do |h| %>
     <% if @haunted.errors.any? %>
       <div id="error_explanation">
         <h2>
@@ -17,13 +17,14 @@
       </div>
     <% end %>
     Select Company: <%= select_tag 'client_id', options_for_select(@clients.collect{|u|[u.company, u.id]}) %><br>
-    <%= f.hidden_field :week_id, :value => @week.id %><br>
-    Type: <%= f.text_field :type %><br>
-    Recap: <%= f.number_field :recap %><br>
-    Order Number: <%= f.number_field :order_number %><br>
-    First Day Sale: <%= f.number_field :fds_amount %><br>
-    Date of the order: <%= f.text_field :email %><br>
+    <%= h.hidden_field :week_id, :value => params[:week_id] %><br>
+    <%= h.hidden_field :user_id, :value => current_user.id %><br>
+    Type: <%= select_tag 'payment', options_for_select("Invoice", "Prepaid") %>
+    Type: <%= h.text_field :payment %><br>
+    Recap: <%= h.number_field :recap %> or Order Number: <%= h.number_field :order_number %><br>
+    First Day Sale: <%= h.number_field :fds_amount %><br>
+    Date of the order (format YEAR-MO-DA): <%= h.text_field :date_of_the_order %><br>
     
 
-    <%= f.submit "Create Sale" %> 
+    <%= h.submit "Create Sale" %> 
 <% end %>

@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 2020_03_12_031925) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "week_id"
     t.integer "client_id"
+    t.integer "user_id"
   end
 
   create_table "haunteds", force: :cascade do |t|
-    t.string "type"
+    t.string "payment"
     t.integer "recap"
     t.integer "order_number"
     t.date "date_of_the_order"
@@ -42,9 +43,11 @@ ActiveRecord::Schema.define(version: 2020_03_12_031925) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "week_id"
     t.integer "client_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "username"
     t.string "email"
     t.string "password_digest"

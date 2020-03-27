@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
     def create
         @client = Client.new(client_params)
         if @client.save 
-            #redirect_to clients_url
+            redirect_to clients_url
         else
             render :new 
         end
