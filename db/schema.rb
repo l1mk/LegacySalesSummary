@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2020_03_12_031925) do
   end
 
   create_table "farms", force: :cascade do |t|
-    t.integer "amount"
+    t.integer "amount", default: 0
     t.integer "recap"
-    t.date "date_of_visit"
+    t.date "date_of_visit", default: "2020-03-27"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "week_id"
@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 2020_03_12_031925) do
   end
 
   create_table "haunteds", force: :cascade do |t|
-    t.string "payment"
+    t.string "payment", default: "Prepaid"
     t.integer "recap"
-    t.integer "order_number"
-    t.date "date_of_the_order"
-    t.integer "fds_amount"
+    t.integer "order_number", default: 0
+    t.date "date_of_the_order", default: "2020-03-27"
+    t.integer "fds_amount", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "week_id"

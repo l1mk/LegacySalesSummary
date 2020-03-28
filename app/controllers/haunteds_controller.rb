@@ -17,7 +17,8 @@ class HauntedsController < ApplicationController
         @haunted.client = Client.find_by(id: params[:client_id])
         @haunted.user = @user
         if @haunted.save 
-            redirect_to user_week_haunteds_url
+            #redirect_to user_week_haunteds_url
+            redirect_to user_weeks_url
         else
             render :new 
         end

@@ -17,7 +17,8 @@ class FarmsController < ApplicationController
             @farm.client = Client.find_by(id: params[:client_id])
             @farm.user = @user
             if @farm.save 
-                redirect_to user_week_farms_url
+                #redirect_to user_week_farms_url
+                redirect_to user_weeks_url
             else
                 render :new 
             end

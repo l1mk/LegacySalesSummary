@@ -6,25 +6,43 @@
 <h5>Position: <%= @user.position %></h5>
 
 
-
+<h3>Performance so far:</h3>
 <ul>
     <li>Total Farms:
+        <% total_farms = 0 %> 
+        <% @user.weeks.each do |w| %>
+        <% total_farms += w.farms.count %>
+        <% end %>
+        <%= total_farms %>
+
     <li>Total Haunted:
+        <% total_haunteds = 0 %> 
+        <% @user.weeks.each do |w| %>
+        <% total_haunteds += w.farms.count %>
+        <% end %>
+        <%= total_haunteds %>
+
     <li>Total First Day Sale:
-    <li>Total Clients:
+        <% total_fds = 0 %> 
+        <% @user.weeks.each do |w| %>
+        <% w.haunteds.each do |h| %>
+            <% total_fds+= h.fds_amount %>
+            <% end %>
+        <% end %>
+        <%= total_fds %>
+
+    <li>Total Retention:
+        <% total_amount = 0 %> 
+        <% @user.weeks.each do |w| %>
+        <% w.farms.each do |f| %>
+            <% total_amount+= f.amount %>
+            <% end %>
+        <% end %>
+        <%= total_amount %>
+
+    <li>Total Clients: <%= @clients.count %>
 </ul>
 
-
-<h3>Performance per Week:</h3>
-<% @weeks.each do |w| %>
-    <ul><%= link_to w.week_number, user_week_path(@user, w) %>
-    <% w.haunteds.each do |h| %>
-       <li>Payment: <%= h.payment %>
-       <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
-       <li>Date: <%= h.date_of_the_order %>
-       </ul> 
-       <% end %>
-    <% end %>
     
 
 <h3><%= link_to "New Week", new_user_week_path(@user) %></h3>
