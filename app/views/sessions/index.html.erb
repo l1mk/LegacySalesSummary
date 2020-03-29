@@ -1,4 +1,46 @@
+<% if current_user == nil %>
 <h1>Welcome to the Team</h1>
+<p>Please create user or login</p>
 
-<p>Please create user or login. </p>
+
+<% elsif current_user.position == "Alpha" || "Owner" || "Assman" %>
+<h1>Team Performance</h1>
+    <% @users.each do |u| %>
+    <%= u.name %>
+    <li>Total Farms:
+        <% total_farms = 0 %> 
+        <% u.weeks.each do |w| %>
+        <% total_farms += w.farms.count %>
+        <% end %>
+        <%= total_farms %>
+
+    <li>Total Haunted:
+        <% total_haunteds = 0 %> 
+        <% u.weeks.each do |w| %>
+        <% total_haunteds += w.farms.count %>
+        <% end %>
+        <%= total_haunteds %>
+
+    <li>Total First Day Sale:
+        <% total_fds = 0 %> 
+        <% u.weeks.each do |w| %>
+        <% w.haunteds.each do |h| %>
+            <% total_fds+= h.fds_amount %>
+            <% end %>
+        <% end %>
+        <%= total_fds %>
+
+    <li>Total Retention:
+        <% total_amount = 0 %> 
+        <% u.weeks.each do |w| %>
+        <% w.farms.each do |f| %>
+            <% total_amount+= f.amount %>
+            <% end %>
+        <% end %>
+        <%= total_amount %><br>
+    <% end %>
+    <% else %>
+    <h1>Welcome Leader/h1>
+
+<% end %>
 <br>
