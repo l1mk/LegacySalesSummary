@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        raise "stop".inspect
         @user = User.new(user_params)
         if @user.save 
             log_in(@user)

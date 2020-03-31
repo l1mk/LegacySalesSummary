@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  
+  get '/auth/:provider/callback' => 'sessions#create'
+
   resources :clients
   resources :users do 
     resources :weeks do 
