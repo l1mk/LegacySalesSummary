@@ -10,13 +10,18 @@ class UsersController < ApplicationController
     end
 
     def create
-        raise "stop".inspect
-        @user = User.new(user_params)
-        if @user.save 
+        if auth_hash = request.env["omniauth.auth"]
+            @user = User.find_or_create_by_omniauth(auth_hash)
             log_in(@user)
-            redirect_to @user 
-        else
+            redirect_to @user
+        else     
+            @user = User.new(user_params)
+            if @user.save 
+                log_in(@user)
+                redirect_to @user 
+            else
             render :new 
+            end
         end
     end
 
