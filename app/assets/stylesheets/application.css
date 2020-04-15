@@ -15,7 +15,7 @@
  */
 
 img {
-    width: 100%;
+    width: 150px;
 }
 
 
@@ -37,7 +37,7 @@ p {
 }
 
 header{
-    background: darkgrey;
+    background: #363636;
     height: 70px;
     padding: 15px;
 }
@@ -62,6 +62,7 @@ header{
  }
 
 #left-nav a{
+    font-size: smaller;
     color: white;
  }
 
@@ -88,14 +89,16 @@ ul li{
 
 #right-nav li a{
     color: white;
+    font-size: smaller;
 }
 
 footer{
     clear: both;
-    background: darkgrey;
+    background: #363636;
     margin-left: 0px;
     margin-top: 50px;
     text-align: left;
+    font-size: small;
     padding: 5px;
     color: white;
 }
@@ -107,7 +110,7 @@ footer a{
 h1{
     clear: both;
     margin-left: 10px;
-    color: #f6d392;
+    color: #fbc33d;
 }
 
 h2{
@@ -127,7 +130,7 @@ h3{
 h4{
     clear: both;
     margin-left: 20px;
-    
+
 }
 
 div.right{
