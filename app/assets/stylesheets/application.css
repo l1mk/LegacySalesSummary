@@ -18,21 +18,43 @@ img {
     width: 100%;
 }
 
+
+
 body{
     background-color: #ffffff;
     margin-left: 0px;
     padding: 0px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 } 
 
 body a{
     color: #383737
 }
 
+p {
+    padding-left: 50px;
+}
+
 header{
     background: darkgrey;
     height: 70px;
     padding: 15px;
+}
+
+.red{
+    background-color: white;
+    color: red;
+}
+
+.orange{
+    background-color: white;
+    color: orange;
+}
+
+.green{
+    background-color: white;
+    color: green;
 }
 
 #left-nav{
@@ -43,9 +65,17 @@ header{
     color: white;
  }
 
+li{
+    padding-left: 1px;
+   
+}
+
 ul li{
      list-style-type: none;
- }
+
+}
+
+
 
 #right-nav{
     float: right;
@@ -84,10 +114,25 @@ h2{
     clear: both;
     margin-left: 30px;
     color: #f6d392;
+   
 }
 
 h3{
     clear: both;
     margin-left: 40px;
     color: #f6d392;
+    
 }
+
+h4{
+    clear: both;
+    margin-left: 20px;
+    
+}
+
+div.right{
+    float: right;
+text-align: right;
+
+}
+    

@@ -32,12 +32,45 @@
  
 
     <li>Total Haunted:
+    <% if total_haunteds >= 8 %>
+    <b class="green">
     <%= total_haunteds %> 
+    </b>
+    <% elsif total_haunteds == 4 %>
+    <b class="orange">
+    <%= total_haunteds %> 
+    </b>
+    <% else %>
+    <b class="red">
+    <%= total_haunteds %> 
+    </b>
+    <% end %>
+
     <li>Total Prepaid:
-    <%= total_prepaids %>
+    <% if total_prepaids >= total_haunteds/2 %>
+    <b class="green">
+    <%= total_prepaids %> 
+    </b>
+    <% else %>
+    <b class="red">
+    <%= total_prepaids %> 
+    </b>
+    <% end %>
+
     <li>Total First Day Sale:
-    <%= total_fds %>
- 
+    <% if total_fds >= 800 %>
+    <b class="green">
+    <%= total_fds %> 
+    </b>
+    <% elsif total_fds == (400..799) %>
+    <b class="orange">
+    <%= total_fds %> 
+    </b>
+    <% else %>
+    <b class="red">
+    <%= total_fds %> 
+    </b>
+    <% end %>
             <% u.weeks.each do |w| %>
                 <% total_farms += w.farms.count %>
                 <% w.farms.each do |f| %>
@@ -47,9 +80,33 @@
 
 
     <li>Total Farms:
-    <%= total_farms %>
+    <% if total_farms >= 6 %>
+    <b class="green">
+    <%= total_farms %> 
+    </b>
+    <% elsif total_farms == (3..5) %>
+    <b class="orange">
+    <%= total_farms %> 
+    </b>
+    <% else %>
+    <b class="red">
+    <%= total_farms %> 
+    </b>
+    <% end %>
     <li>Total Retention:
-    <%= total_retentions %><br>
+    <% if total_retentions >= 1000 %>
+    <b class="green">
+    <%= total_retentions %> 
+    </b>
+    <% elsif total_retentions == (500..999) %>
+    <b class="orange">
+    <%= total_retentions %> 
+    </b>
+    <% else %>
+    <b class="red">
+    <%= total_retentions %> 
+    </b>
+    <% end %>
 
     <% @haunteds_total += total_haunteds %>
     <% @prepaids_total += total_prepaids %>
@@ -59,11 +116,13 @@
     <% @net_total += total_fds %>  
     <% end %>
     
+    <div class="right">
     <h4> Office Total Haunteds: <%= @haunteds_total %></h4>
     <h4> Office Total Prepaid: <%= @prepaids_total %></h4>
     <h4> Office Total Farms: <%= @farms_total %></h4>
     <h4> Office Total Retention: $<%= @retentions_total %></h4>
     <h4> Office Total Net Sales: $<%= @net_total %></h4>
+    </div>
     <% else %>
     <h1>Welcome Leader/h1>
 
