@@ -5,21 +5,39 @@
 
 <% elsif current_user.position == "Alpha" || "Owner" || "Assman" %>
 <h1>Team Performance</h1>
+
+    <% @total = 0 %>
+    <% @farms_total = 0 %>
+    <% @haunteds_total = 0 %>
+    <% @prepaids_total = 0 %>
+    <% @retention_total = 0 %>
     <% @users.each do |u| %>
+        
     <%= u.name %>
     <li>Total Farms:
         <% total_farms = 0 %> 
         <% u.weeks.each do |w| %>
         <% total_farms += w.farms.count %>
         <% end %>
+        <% @farms_total += total_farms %>
         <%= total_farms %>
 
     <li>Total Haunted:
         <% total_haunteds = 0 %> 
+        <% total_prepaids = 0 %> 
         <% u.weeks.each do |w| %>
-        <% total_haunteds += w.farms.count %>
+                <% w.haunteds.each do |h| %>
+                    <% if h.payment == "Prepaid" %>
+                    <% total_prepaids += 1 %>
+                    <% end %>
+                <% end %>
+        <% total_haunteds += w.haunteds.count %>
         <% end %>
-        <%= total_haunteds %>
+        <% @haunteds_total += total_haunteds %>
+        <%= total_haunteds %> 
+    <li>Prepaid: 
+        <% @prepaids_total += total_prepaids %>
+        <%= total_prepaids %>
 
     <li>Total First Day Sale:
         <% total_fds = 0 %> 
@@ -28,6 +46,7 @@
             <% total_fds+= h.fds_amount %>
             <% end %>
         <% end %>
+        <% @total += total_fds %>
         <%= total_fds %>
 
     <li>Total Retention:
@@ -37,8 +56,15 @@
             <% total_amount+= f.amount %>
             <% end %>
         <% end %>
+        <% @total += total_amount %>
+        <% @retention_total += total_amount %>
         <%= total_amount %><br>
     <% end %>
+    <p> Office Total Net Sales: $<%= @total %>
+    <p> Office Total Farms: <%= @farms_total %>
+    <p> Office Total Haunteds: <%= @haunteds_total %>
+    <p> Office Total Prepaid: <%= @prepaids_total %>
+    <p> Office Total Retention: $<%= @retention_total %>
     <% else %>
     <h1>Welcome Leader/h1>
 
