@@ -1,28 +1,48 @@
 <h1>Week <%= @week.week_number %> Page</h1>
-<h3><%= link_to "Edit", edit_user_week_path(current_user.id, @week.id) %></h3>
-
-
-<p>Summary for the Week</p>
-    <ol>
-    <% @week.haunteds.each do |h| %>
-        <li>Recap:<%= h.recap%>. Order:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
-        <p>Payment: <%= h.payment %></p>
-        <p>Date: <%= h.date_of_the_order %></p>
-        <p>Company: <%= link_to h.client.company, client_path(h.client) %></p>
-    <% end %>
-    </ol>
-   
-    <ol>
-    <% @week.farms.each do |f| %>
-        <li>Recap:<%= f.recap %>
-        <p>Date: <%= f.date_of_visit %></p>
-        <p>Amount: $<%= f.amount %></p>
-        <p>Company: <%= link_to f.client.company, client_path(f.client) %></p>
-    <% end %>
-    </ol>   
-
-
-    
+<h3><%= link_to "Edit Week", edit_user_week_path(current_user.id, @week.id) %></h3>
 <h3><%= link_to "New Client", new_client_path %></h3>
 <h3><%= link_to "New Haunted", new_user_week_haunted_path(current_user.id, @week.id) %></h3>
 <h3><%= link_to "New Farm", new_user_week_farm_path(current_user.id, @week.id) %></h3>
+
+<% @haunteds_total = 0 %>
+<% @fds_total = 0 %>
+<% @prepaids_total = 0 %>
+<% @farms_total = 0 %>
+<% @retentions_total = 0 %>
+
+<p>List of Sales for the Week</p>
+
+    <ol>
+    <% @week.farms.each do |f| %>
+        <li>Farm Recap:<%= f.recap %>
+        <p>Amount: $<%= f.amount %></p>
+        <p>Date: <%= f.date_of_visit %></p>
+        <p>Company: <%= link_to f.client.company, client_path(f.client) %></p>
+        <% @farms_total +=  1 %>
+        <% @retentions_total += f.amount %>
+    <% end %>
+    <% @week.haunteds.each do |h| %>
+        <li>Haunted Recap:<%= h.recap%>. Order No:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
+        <p>Payment: <%= h.payment %></p>
+            <% if h.payment == "Prepaid" %>
+            <% @prepaids_total += 1 %>
+            <% end %>
+        <p>Date: <%= h.date_of_the_order %></p>
+        <p>Company: <%= link_to h.client.company, client_path(h.client) %></p>
+        <% @haunteds_total += 1 %>
+        <% @fds_total +=  h.fds_amount %>
+    <% end %>
+    </ol>
+   
+<h4>Summary for the Week</h4>
+
+
+
+Haunted Total: <%= @haunteds_total %>.
+Prepaid Total: <%= @prepaids_total %>.
+First Day Total: $<%= @fds_total %>.
+Farm Total: <%= @farms_total %>.
+Retention Total: $<%= @retentions_total %>.
+
+
+    
