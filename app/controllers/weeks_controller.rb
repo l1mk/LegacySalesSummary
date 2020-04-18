@@ -8,10 +8,13 @@ class WeeksController < ApplicationController
 
     def new
         @week = Week.new
+        @months = Month.all
     end
 
     def create
+        @months = Month.all
         @week = Week.new(week_params)
+        @week.month = Month.find_by(id: params[:month_id])
         if @week.save 
             redirect_to user_weeks_url
         else
@@ -50,7 +53,7 @@ class WeeksController < ApplicationController
 
     private 
     def week_params 
-        params.require(:week).permit(:week_number, :user_id)
+        params.require(:week).permit(:week_number, :user_id, :month_id)
     end
 
 
