@@ -138,4 +138,13 @@ div.right{
 text-align: right;
 
 }
+
+div.small{
+font-size: xx-small;
+color: #363636;
+clear: both;
+padding-left: 50px;
+padding-top: 5px;
+
+}
     

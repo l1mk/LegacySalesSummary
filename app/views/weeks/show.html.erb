@@ -19,6 +19,7 @@
         <p>Amount: $<%= f.amount %></p>
         <p>Date: <%= f.date_of_visit %></p>
         <p>Company: <%= link_to f.client.company, client_path(f.client) %></p>
+        <div class="small"><%= last_updated_farm(f) %></div><br>
         <% @farms_total +=  1 %>
         <% @retentions_total += f.amount %>
     <% end %>
@@ -30,6 +31,7 @@
             <% end %>
         <p>Date: <%= h.date_of_the_order %></p>
         <p>Company: <%= link_to h.client.company, client_path(h.client) %></p>
+        <div class="small"><%= last_updated_haunted(h) %></div><br>
         <% @haunteds_total += 1 %>
         <% @fds_total +=  h.fds_amount %>
     <% end %>
