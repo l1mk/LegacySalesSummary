@@ -4,6 +4,7 @@ class WeeksController < ApplicationController
         #@weeks = Week.all 
         @user = User.find_by(id: current_user.id)
         @weeks = @user.weeks.all
+        @months = Month.all
     end
 
     def new
@@ -31,6 +32,7 @@ class WeeksController < ApplicationController
 
     def edit
         @week = Week.find(params[:id])
+        @months = Month.all
     end
 
     def update
