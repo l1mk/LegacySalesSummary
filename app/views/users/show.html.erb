@@ -5,6 +5,7 @@
 <b>Name: </b><%= @user.name %><br>
 <b>Email: </b><%= @user.email %><br>
 <b>Position: </b><%= @user.position %><br>
+<b>Started since: </b><%= created_at(@user) %>
 </p>
 
 
@@ -45,5 +46,5 @@
 
     
 
-<h3><%= link_to "New Week", new_user_week_path(@user) %></h3>
-<h3><%= link_to "New Client", new_client_path %></h3>
+<h4><%= link_to "New Week", new_user_week_path(@user) %></h4>
+<h4><%= link_to "New Client", new_client_path %></h4>

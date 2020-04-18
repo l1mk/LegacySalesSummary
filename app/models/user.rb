@@ -1,6 +1,11 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :weeks
+
+    #new
+        has_many :months
+    #new
+        has_many :weeks, through: :months
+
     has_many :haunteds, through: :weeks
     has_many :farms, through: :weeks
 
