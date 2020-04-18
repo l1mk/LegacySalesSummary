@@ -2,10 +2,10 @@
 
 <% @weeks.each do |w| %>
     <h3>#<%= link_to w.week_number, user_week_path(current_user.id, w.id) %> Week:</h3>
-    <h4>- Haunteds: (<%= w.haunteds.count %>)</h4>
-    <h4>- Farms:(<%= w.farms.count %>)</h4>
+    <h5>- Haunteds: (<%= w.haunteds.count %>)</h5>
+    <h5>- Farms:(<%= w.farms.count %>)</h5>
     <% end %>
     <br>
 
-<h3><%= link_to "New Week", new_user_week_path(@user) %></h3>
+<h4><%= link_to "New Week", new_user_week_path(@user) %></h4>
 <br>

@@ -1,5 +1,5 @@
 <h1>Client Edition Page</h1>
-<h4><%= link_to "Delete", client_path(@client), data: { method: :delete, confirm: "Are you sure you want to delete the User?" } %></h4>
+<h4><%= link_to "Delete Company", client_path(@client), data: { method: :delete, confirm: "Are you sure you want to delete the User?" } %></h4>
 
 <%= form_for @client do |f| %>
     <% if @client.errors.any? %>
@@ -21,6 +21,6 @@
     Decision Maker: <%= f.text_field :dm %><br>
     Address: <%= f.text_field :address %><br>
     Phone: <%= f.text_field :phone %><br>
-    Email: <%= f.text_field :email %><br>
+    Email: <%= f.text_field :email %><br><br>
     <%= f.submit "Update Client" %> 
 <% end %>

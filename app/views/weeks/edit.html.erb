@@ -1,5 +1,5 @@
 <h1>Week Edition Page</h1>
-<h3><%= link_to "Delete", user_week_path(current_user.id, @week), data: { method: :delete, confirm: "Are you sure you want to delete the Week?" } %></h3>
+<h4><%= link_to "Delete", user_week_path(current_user.id, @week), data: { method: :delete, confirm: "Are you sure you want to delete the Week?" } %></h4>
 
 <%= form_for @week, url: user_week_path(current_user.id, @week) do |f| %>
     <% if @week.errors.any? %>
@@ -18,6 +18,6 @@
     <% end %>
     
     Week Number: <%= f.number_field :week_number %><br>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %><br>
     <%= f.submit "Update Week" %> 
 <% end %>
