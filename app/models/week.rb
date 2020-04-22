@@ -9,9 +9,9 @@ class Week < ApplicationRecord
 
     validates :week_number, presence: true
 
-    def self.by_month(month_id)
-        where(month: month_id)
-      end
+    def self.by_month(month_id, user_id)
+        where(month: month_id, user: user_id)
+    end
 
 
 end

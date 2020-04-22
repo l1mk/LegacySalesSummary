@@ -7,7 +7,7 @@ class WeeksController < ApplicationController
         @months = Month.all
 
         if !params[:month].blank?
-            @weeks = Week.by_month(params[:month])
+            @weeks = Week.by_month(params[:month], current_user.id)
           
           else
             # if no filters are applied, show all posts
