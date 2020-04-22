@@ -15,7 +15,7 @@
 
     <ol>
     <% @week.farms.each do |f| %>
-        <li>Farm Recap:<%= f.recap %>
+        <li>Farm Recap:<%= link_to f.recap, user_week_farm_path %>
         <p>Amount: $<%= f.amount %></p>
         <p>Date: <%= f.date_of_visit %></p>
         <p>Company: <%= link_to f.client.company, client_path(f.client) %></p>

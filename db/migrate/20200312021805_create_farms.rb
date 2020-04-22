@@ -3,7 +3,7 @@ class CreateFarms < ActiveRecord::Migration[6.0]
     create_table :farms do |t|
       t.integer :amount, default: 0
       t.integer :recap
-      t.date :date_of_visit, :default => Date.today
+      t.date :date_of_visit, default: Date.today
 
       t.timestamps
     end

@@ -1,5 +1,6 @@
 <h1>Users List</h1>
 
+<h4>Active Employees: <%= @users.count %> </h4>
 <% @users.each do |u| %>
     <li><%= u.name %></li>
 <% end %> 

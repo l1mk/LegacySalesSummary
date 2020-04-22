@@ -4,7 +4,7 @@ class CreateHaunteds < ActiveRecord::Migration[6.0]
       t.string :payment, default: "Prepaid"
       t.integer :recap
       t.integer :order_number, default: 0
-      t.date :date_of_the_order, :default => Date.today
+      t.date :date_of_the_order, default: Date.today
       t.integer :fds_amount, default: 0
 
       t.timestamps

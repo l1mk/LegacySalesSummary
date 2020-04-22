@@ -2,23 +2,5 @@
 <h4><%= link_to "Delete", user_week_path(current_user.id, @week), data: { method: :delete, confirm: "Are you sure you want to delete the Week?" } %></h4>
 
 <%= form_for @week, url: user_week_path(current_user.id, @week) do |f| %>
-    <% if @week.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@week.errors.count, "error") %>
-          prohibited this week from being saved:
-        </h2>
-    
-        <ul>
-        <% @week.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-    
-    Month: <%= select_tag 'month_id', options_for_select(@months.collect{|u|[u.name, u.id]}) %><br>
-    Week Number: <%= f.number_field :week_number %><br>
-    <%= f.hidden_field :user_id, :value => current_user.id %><br>
-    <%= f.submit "Update Week" %> 
+  <%= render 'form', :f => f %>
 <% end %>
