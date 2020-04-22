@@ -1,5 +1,13 @@
 <h1>Weeks List</h1>
 
+<div>
+  <h3>Filter posts:</h3>
+  <%= form_tag(user_weeks_path(current_user.id), method: "get") do %>
+    <%= select_tag "month", options_from_collection_for_select(@months, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
 <% @weeks.each do |w| %>
     <h3>#<%= link_to w.week_number, user_week_path(current_user.id, w.id) %> Week:</h3>
     <h5>- Haunteds: (<%= w.haunteds.count %>)</h5>

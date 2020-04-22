@@ -136,6 +136,7 @@ h4{
 div.right{
     float: right;
 text-align: right;
+padding-right: 50px;
 
 }
 

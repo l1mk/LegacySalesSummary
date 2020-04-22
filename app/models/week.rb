@@ -8,4 +8,10 @@ class Week < ApplicationRecord
         belongs_to :month
 
     validates :week_number, presence: true
+
+    def self.by_month(month_id)
+        where(month: month_id)
+      end
+
+
 end
