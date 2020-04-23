@@ -16,7 +16,7 @@
 Full Name: <%= f.text_field :name %><br>
 Username: <%= f.text_field :username %><br>
 Email: <%= f.text_field :email %><br>
-Position: <%= select_tag "position", options_for_select(["Entry", "Leader", "Alpha", "Assman", "Owner"]) %>
+Position: <%= f.select "position", options_for_select(["Entry", "Leader", "Alpha", "Assman", "Owner"]) %>
 Password: <%= f.password_field :password %><br>
 Password Confirmation: <%= f.password_field :password_confirmation %><br>
 <%= f.submit "Submit" %> 

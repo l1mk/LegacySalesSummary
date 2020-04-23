@@ -16,8 +16,7 @@
         </ul>
       </div>
     <% end %>
-    Type: <%= select_tag 'payment', options_for_select("Invoice", "Prepaid") %>
-    Type: <%= h.text_field :payment %><br>
+    Type: <%= h.select "payment", options_for_select(["Invoice", "Prepaid"]) %>
     Recap: <%= h.number_field :recap %><br> or Order Number: <%= h.number_field :order_number %><br>
     First Day Sale: $ <%= h.number_field :fds_amount %><br>
     Date of the order (format YEAR-MO-DA): <%= h.text_field :date_of_the_order %><br>

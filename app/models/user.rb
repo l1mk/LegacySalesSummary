@@ -12,8 +12,6 @@ validates :username, presence: true
 validates :username, uniqueness: true
 validates :email, presence: true
 validates :email, uniqueness: true
-
-validates :position, presence: true
 validates :password, presence: true, on: :create
 
     def self.find_or_create_by_omniauth(auth_hash)
