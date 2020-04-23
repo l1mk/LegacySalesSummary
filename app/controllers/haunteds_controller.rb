@@ -14,7 +14,6 @@ class HauntedsController < ApplicationController
         @clients = Client.all
         @user = User.find_by(id: current_user.id)
         @haunted = Haunted.new(haunted_params)
-        @haunted.client = Client.find_by(id: params[:client_id])
         @haunted.user = @user
         if @haunted.save 
             #redirect_to user_week_haunteds_url
@@ -32,9 +31,11 @@ class HauntedsController < ApplicationController
 
     def edit
         @haunted = Haunted.find(params[:id])
+        @clients = Client.all 
     end
 
     def update
+        @clients = Client.all 
         @haunted = Haunted.find(params[:id])
         @haunted.update(haunted_params)
         if @haunted.save 

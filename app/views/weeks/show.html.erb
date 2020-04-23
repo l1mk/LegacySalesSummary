@@ -1,8 +1,5 @@
 <h1>Week <%= @week.week_number %> Page</h1>
 <h4><%= link_to "Edit Week", edit_user_week_path(current_user.id, @week.id) %></h4>
-<h4><%= link_to "New Client", new_client_path %></h4>
-<h4><%= link_to "New Haunted", new_user_week_haunted_path(current_user.id, @week.id) %></h4>
-<h4><%= link_to "New Farm", new_user_week_farm_path(current_user.id, @week.id) %></h4>
 <br>
 
 <% @haunteds_total = 0 %>
@@ -15,7 +12,7 @@
 
     <ol>
     <% @week.farms.each do |f| %>
-        <li>Farm Recap:<%= link_to f.recap, user_week_farm_path %>
+        <li>Farm Recap: <%= link_to f.recap, user_week_farm_url(current_user.id, f.week_id, f.id) %>
         <p>Amount: $<%= f.amount %></p>
         <p>Date: <%= f.date_of_visit %></p>
         <p>Company: <%= link_to f.client.company, client_path(f.client) %></p>
@@ -24,7 +21,7 @@
         <% @retentions_total += f.amount %>
     <% end %>
     <% @week.haunteds.each do |h| %>
-        <li>Haunted Recap:<%= h.recap%>. Order No:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
+        <li>Haunted Recap: <%= link_to h.recap, user_week_haunted_url(current_user.id, h.week_id, h.id) %>. Order No:<%= h.order_number %>. FDS: $<%= h.fds_amount %>
         <p>Payment: <%= h.payment %></p>
             <% if h.payment == "Prepaid" %>
             <% @prepaids_total += 1 %>
@@ -46,4 +43,7 @@ Farm Total: <%= @farms_total %>.<br>
 Retention Total: $<%= @retentions_total %>.<br>
 </p>
 
+<h4><%= link_to "New Client", new_client_path %></h4>
+<h4><%= link_to "New Haunted", new_user_week_haunted_path(current_user.id, @week.id) %></h4>
+<h4><%= link_to "New Farm", new_user_week_farm_path(current_user.id, @week.id) %></h4>
     

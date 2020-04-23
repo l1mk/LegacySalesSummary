@@ -15,7 +15,8 @@
     <li><a href="/"</a> <%= image_tag("logos/legacy.png") %></li>
     </ul>
   
-      <% if current_user != nil %> 
+
+    <% if current_user != nil %> 
     <ul id="right-nav"> 
     <li><a><%= link_to "Weeks", user_weeks_path(current_user.id) %></a></li>
     <li><a><%= link_to "Clients", clients_path %></a></li> 

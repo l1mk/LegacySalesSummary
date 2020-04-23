@@ -1,0 +1,23 @@
+<% if @farm.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@farm.errors.count, "error") %>
+    prohibited this farm from being saved:
+  </h2>
+
+  <ul>
+  <% @farm.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+Select Company: <%= f.select "client_id", options_for_select(@clients.collect{|u|[u.company, u.id]}) %><br>
+<%= f.hidden_field :week_id, :value => params[:week_id] %><br>
+<%= f.hidden_field :user_id, :value => current_user.id %><br>
+Amount: <%= f.text_field :amount %><br>
+Recap: <%= f.number_field :recap %><br>
+Date of the visit (format YEAR-MO-DA): <%= f.text_field :date_of_visit %><br>
+
+<%= f.submit "Submit" %> 

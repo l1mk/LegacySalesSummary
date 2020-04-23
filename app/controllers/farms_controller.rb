@@ -14,7 +14,6 @@ class FarmsController < ApplicationController
             @clients = Client.all
             @user = User.find_by(id: current_user.id)
             @farm = Farm.new(farm_params)
-            @farm.client = Client.find_by(id: params[:client_id])
             @farm.user = @user
             if @farm.save 
                 #redirect_to user_week_farms_url
@@ -32,9 +31,11 @@ class FarmsController < ApplicationController
     
         def edit
             @farm = Farm.find(params[:id])
+            @clients = Client.all 
         end
     
         def update
+            @clients = Client.all 
             @farm = Farm.find(params[:id])
             @farm.update(farm_params)
             if @farm.save 

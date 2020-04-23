@@ -9,7 +9,7 @@
 </div>
 
 <% @weeks.each do |w| %>
-    <h3>#<%= link_to w.week_number, user_week_path(current_user.id, w.id) %> Week:</h3>
+    <h3>#<%= link_to w.week_number, user_week_path(current_user.id, w.id) %> Week of <%= w.month.name %>:</h3>
     <h5>- Haunteds: (<%= w.haunteds.count %>)</h5>
     <h5>- Farms:(<%= w.farms.count %>)</h5>
     <% end %>

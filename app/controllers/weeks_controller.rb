@@ -25,7 +25,6 @@ class WeeksController < ApplicationController
     def create
         @months = Month.all
         @week = Week.new(week_params)
-        @week.month = Month.find_by(id: params[:month_id])
         if @week.save 
             redirect_to user_weeks_url
         else
