@@ -1,10 +1,10 @@
 <h1>No. Recap: <%= @farm.recap %> Farm Sale</h1>
 <h4><%= link_to "Edit", edit_user_week_farm_path(current_user.id, @week.id, @farm) %></h4>
 
-
+<p>
 Amount: $ <%= @farm.amount %><br>
 Date: <%= @farm.date_of_visit %><br>
 Week: <%= @week.week_number %><br>
 Company: <%= @client.company %><br>
-
+</p>
 

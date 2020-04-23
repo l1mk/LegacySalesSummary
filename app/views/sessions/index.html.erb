@@ -2,24 +2,14 @@
 <h1>Welcome to the Team</h1>
 <p>Please create user or login</p>
 
-<% elsif current_user.position == "Leader" %>
+<% elsif current_user.position == "Entry" || current_user.position == "Leader" %>
     
-    <h1>Welcome Leader</h1>
-
-    <div class="right">
-    <b>
-    Office Total Haunteds: <%= @haunteds_total %><br>
-    Office Total Prepaid: <%= @prepaids_total %><br>
-    Office Total Farms: <%= @farms_total %><br>
-    Office Total Retention: $<%= @retentions_total %><br>
-    Office Total Net Sales: $<%= @net_total %><br>
-    </b>
-    <br>
-    <br>
-    </div>
+    <h1>Welcome <%= current_user.position%></h1>
+<p> Go ahead and Create your Week sales and Client database. <p>
 
 <% else %>
-<h1>Team Performance</h1>
+<h1>Welcome <%= current_user.position%></h1>
+<h3>Team Performance</h3>
 
     <% @haunteds_total = 0 %>
     <% @prepaids_total = 0 %>

@@ -1,10 +1,11 @@
 <h1>No. Recap: <%= @haunted.recap %> Haunted Sale</h1>
 <h4><%= link_to "Edit", edit_user_week_haunted_path(current_user.id, @week.id, @haunted) %></h4>
 
+<p>
 Type: <%= @haunted.payment %><br>
 Date: <%= @haunted.date_of_the_order %><br>
 First Day Sale: $ <%= @haunted.fds_amount %><br>
 Week: <%= @week.week_number %><br>
 Company: <%= @client.company %><br>
-
+</p>
 
