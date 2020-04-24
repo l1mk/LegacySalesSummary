@@ -1,13 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-
-
     has_many :weeks
-
     has_many :haunteds, through: :weeks
     has_many :farms, through: :weeks
-
-
 validates :username, presence: true
 validates :username, uniqueness: true
 validates :email, presence: true
