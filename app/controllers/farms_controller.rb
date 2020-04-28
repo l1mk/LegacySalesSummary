@@ -1,5 +1,5 @@
 class FarmsController < ApplicationController
-    
+    before_action :find_farm , only: [:show, :edit, :update, :destroy]
         def index
             @farms = Farm.all 
             @week = Week.find_by(id: params[:id])
@@ -13,9 +13,7 @@ class FarmsController < ApplicationController
     
         def create
             @clients = Client.all
-            @user = User.find_by(id: current_user.id)
-            @farm = Farm.new(farm_params)
-            @farm.user = @user
+            @farm = current_user.Farms.build(farm_params)
             if @farm.save 
                 #redirect_to user_week_farms_url
                 redirect_to user_weeks_url
@@ -25,19 +23,19 @@ class FarmsController < ApplicationController
         end
     
         def show
-            @farm = Farm.find_by(id: params[:id])
+            #@farm = Farm.find_by(id: params[:id])
             @week = Week.find_by(id: @farm.week_id)
             @client = Client.find_by(id: @farm.client_id) 
         end
     
         def edit
-            @farm = Farm.find(params[:id])
+            #@farm = Farm.find(params[:id])
             @clients = Client.all 
         end
     
         def update
             @clients = Client.all 
-            @farm = Farm.find(params[:id])
+            #@farm = Farm.find(params[:id])
             @farm.update(farm_params)
             if @farm.save 
                 redirect_to user_week_farms_url
@@ -47,7 +45,7 @@ class FarmsController < ApplicationController
         end
     
         def destroy
-            @farm = Farm.find(params[:id])
+            #@farm = Farm.find(params[:id])
             @farm.destroy 
             flash[:notice] = "Farm deleted"
             redirect_to user_week_farms_path
@@ -58,4 +56,9 @@ class FarmsController < ApplicationController
         def farm_params 
             params.require(:farm).permit(:amount, :recap, :date_of_visit, :week_id, :client_id, :user_id)
         end
+
+        def find_farm
+            @farm = Farm.find(params[:id])
+        end
+
 end
