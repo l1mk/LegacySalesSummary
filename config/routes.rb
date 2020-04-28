@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/auth/github/callback' => 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#create'
+  #match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   
 
   resources :clients

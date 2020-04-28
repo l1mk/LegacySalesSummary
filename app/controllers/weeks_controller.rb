@@ -1,20 +1,14 @@
 class WeeksController < ApplicationController
 
     def index
-        #@weeks = Week.all 
         @user = User.find_by(id: current_user.id)
         @weeks = @user.weeks.all
         @months = Month.all
-
         if !params[:month].blank?
             @weeks = Week.by_month(params[:month], current_user.id)
-          
-          else
-            # if no filters are applied, show all posts
+        else
             @weeks = @user.weeks.all
-          end
-
-
+        end
     end
 
     def new

@@ -1,4 +1,5 @@
 class HauntedsController < ApplicationController
+    
     def index
         @haunteds = Haunted.all 
         @week = Week.find_by(id: params[:id])
@@ -57,5 +58,4 @@ class HauntedsController < ApplicationController
     def haunted_params 
         params.require(:haunted).permit(:payment, :recap, :order_number, :fds_amount, :date_of_the_order, :week_id, :client_id, :user_id)
     end
-
 end

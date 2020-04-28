@@ -1,4 +1,5 @@
 class FarmsController < ApplicationController
+    
         def index
             @farms = Farm.all 
             @week = Week.find_by(id: params[:id])
@@ -57,5 +58,4 @@ class FarmsController < ApplicationController
         def farm_params 
             params.require(:farm).permit(:amount, :recap, :date_of_visit, :week_id, :client_id, :user_id)
         end
-
 end
