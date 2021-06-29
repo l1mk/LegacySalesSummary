@@ -11,7 +11,7 @@ This web app was developed using ruby on rails. Further Works needs to be done t
 
 * Ruby version:
 
-ruby 2.6.1p33 (2019-01-30 revision 66950) [x86_64-darwin19]
+        ruby 2.6.1p33 (2019-01-30 revision 66950) [x86_64-darwin19]
 
 * System dependencies:
 
@@ -25,11 +25,14 @@ As shown by the error:
         "Your Yarn packages are out of date!
         Please run `yarn install --check-files` to update."
   
-To disable this check, please change `check_yarn_integrity`
-to `false` in your webpacker config file (config/webpacker.yml).
+        To disable this check, please change `check_yarn_integrity`
+        to `false` in your webpacker config file (config/webpacker.yml).
 
 And then erase line 9 from app/views/layouts/application.html.erb that has the following:
-<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+To allow the app to finally render.
 
 
 * Database creation/initialization:
