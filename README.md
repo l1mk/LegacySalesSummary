@@ -22,8 +22,8 @@ Please refer to the Gemfile file inside the LegacySalesSummary folder
 If you cant run the app as is, make sure to turn false the check_yarn_integrity inside the config/webpacker.yml.
 As shown by the error:
 
-  "Your Yarn packages are out of date!
-  Please run `yarn install --check-files` to update."
+        "Your Yarn packages are out of date!
+        Please run `yarn install --check-files` to update."
   
 To disable this check, please change `check_yarn_integrity`
 to `false` in your webpacker config file (config/webpacker.yml).
