@@ -37,7 +37,7 @@ To allow the app to finally render.
 
 * Database creation/initialization:
 
-Before starting the server make sure to run $rails db:migrate RAILS_ENV=development
+Before starting the server make sure to run $rails db:migrate RAILS_ENV=development and $rake db:seed to add the months for the week creationg page
 
 
 
